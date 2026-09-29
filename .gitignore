@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+.next-stale-*/
+out/
+dist/
+
+# Local environment files (keep the public template)
+.env
+.env.*
+!.env.example
+
+# Tests, logs, and editor files
+coverage/
+*.log
+.DS_Store
+*.tsbuildinfo
+*.swp
+*.swo
+
+# Runtime uploads and local database exports
+public/uploads/
+/*.sql
+*.dump
+*.backup
+*.bak
+
+# Generated deployment bundles
+deploy/*.zip
+deploy/*.tar.gz

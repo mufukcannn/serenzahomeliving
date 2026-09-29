@@ -1,0 +1,3 @@
+ALTER TABLE "Order" ADD COLUMN IF NOT EXISTS "assignedTo" TEXT;
+
+ALTER TABLE "Shipment" ADD COLUMN IF NOT EXISTS "assignedUserId" TEXT;

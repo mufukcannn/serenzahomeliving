@@ -1,0 +1,28 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: serenza
+      POSTGRES_USER: serenza
+      POSTGRES_PASSWORD: serenza
+    ports:
+      - "5432:5432"
+    volumes:
+      - serenza-postgres:/var/lib/postgresql/data
+
+  web:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://serenza:serenza@postgres:5432/serenza
+      APP_URL: http://localhost:3000
+      PAYMENT_PROVIDER: paytr
+      PAYTR_TEST_MODE: "1"
+      PAYTR_DEBUG_ON: "1"
+    ports:
+      - "3000:3000"
+    command: sh -c "npx prisma migrate deploy && npm start"
+
+volumes:
+  serenza-postgres:
